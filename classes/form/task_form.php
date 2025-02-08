@@ -27,17 +27,21 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir . '/formslib.php');
 
 /**
- * Add button form.
+ * New task form.
  */
-class add_button_form extends \moodleform {
+class task_form extends \moodleform {
     /**
      * Define form.
      */
     public function definition() {
         $mform = $this->_form;
-        $buttonarray=array();
-        $buttonarray[] = $mform->createElement('submit', 'submitbutton', get_string('add', 'local_task_tracker'));
-        $buttonarray[] = $mform->createElement('reset', 'resetbutton', get_string('revert', 'local_task_tracker'));
-        $mform->addGroup($buttonarray, 'buttonar', '', ' ', false);
+
+        $mform->addElement('text',  'taskname',  get_string('taskname', 'local_task_tracker'));
+        $mform->setType('taskname', PARAM_TEXT);
+
+        $mform->addElement('date_selector', 'enddate', get_string('enddate', 'local_task_tracker'));
+        $mform->setType('enddate', PARAM_RAW);
+
+        $mform->addElement('submit', 'submitbutton', get_string('add', 'local_task_tracker'));
     }
 }

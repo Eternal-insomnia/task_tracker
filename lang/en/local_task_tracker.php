@@ -27,5 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Task tracker';
 $string['greeting'] = 'Todo List';
+$string['taskname'] = 'Task name';
+$string['enddate'] = 'End date';
 $string['add'] = 'Add';
-$string['revert'] = 'Reset';
+$string['reset'] = 'Reset';
