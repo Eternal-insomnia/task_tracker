@@ -31,8 +31,12 @@ $PAGE->set_pagelayout('standard');
 $PAGE->set_title($SITE->fullname);
 $PAGE->set_heading(get_string('pluginname', 'local_task_tracker'));
 
+// Add button.
+$addform = new \local_task_tracker\form\add_button_form();
+
 echo $OUTPUT->header();
 
-echo html_writer::tag('p', "Hello!", ['class' => 'message']);
+echo html_writer::tag('h3', get_string('greeting', 'local_task_tracker'));
+$addform->display();
 
 echo $OUTPUT->footer();

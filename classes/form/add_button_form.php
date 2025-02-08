@@ -15,17 +15,29 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Plugin strings are defined here.
+ * Plugin version and other meta-data are defined here.
  *
  * @package     local_task_tracker
- * @category    string
  * @copyright   2025 Aleksei alexsuvorov2506@gmail.com
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace local_task_tracker\form;
 defined('MOODLE_INTERNAL') || die();
+require_once($CFG->libdir . '/formslib.php');
 
-$string['pluginname'] = 'Task tracker';
-$string['greeting'] = 'Todo List';
-$string['add'] = 'Add';
-$string['revert'] = 'Reset';
+/**
+ * Add button form.
+ */
+class add_button_form extends \moodleform {
+    /**
+     * Define form.
+     */
+    public function definition() {
+        $mform = $this->_form;
+        $buttonarray=array();
+        $buttonarray[] = $mform->createElement('submit', 'submitbutton', get_string('add', 'local_task_tracker'));
+        $buttonarray[] = $mform->createElement('reset', 'resetbutton', get_string('revert', 'local_task_tracker'));
+        $mform->addGroup($buttonarray, 'buttonar', '', ' ', false);
+    }
+}
